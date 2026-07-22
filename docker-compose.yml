@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  rag:
+    build: .
+    container_name: rag_app
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./:/app:cached
+      - /app/.venv
+      - ./data:/app/data:cached
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
